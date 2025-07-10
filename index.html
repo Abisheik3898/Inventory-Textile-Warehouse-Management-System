@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textile Warehouse</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">Textile Warehouse and India Pvt Limited</div>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="sidebar" id="sidebar">
+        <a onclick="goToHome()" class="back-btn">⬅</a>
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('products')">Add Products</a>
+        <a onclick="showSection('add-products')">Inventory List</a>
+        <a onclick="showSection('checkout-supplier')">Order Product</a>
+        <a onclick="showSection('customer-details')">Order Details</a>
+        <a onclick="showSection('sales-report')">Supplier Details</a>
+        <a onclick="showSection('ezhil')">Sales Report</a>
+    </div>
+
+   
+        <div id="home" class="form-section">
+            <h2>Welcome to Warehouse Dashboard</h2>
+            <p>This is the home page where you can navigate to various sections.</p>
+         
+      
+        <div class="container">
+            <img src="https://imgs.search.brave.com/9NrNbxq9do_0xzQR9fSbwJH2joClSlhoHW9kbVOQR4o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by90aHJlYWQtc3Bv/b2xzLW1hY2hpbmVy/eS1mYWN0b3J5XzEw/NDg5NDQtNDEyNTk0/NC5qcGc_c2VtdD1h/aXNfaHlicmlk" alt="Textile Processing" class="textile-image" width="380" height="200">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShPYi9zI67n3Ff_OInMhPlYCbrjchmXumKPA&s" alt="Textile Processing" class="textile-image" width="400" height="200">
+            <h1>Welcome to Our Warehouse</h1>
+            <p>We specialize in the efficient storage, handling, and processing of textiles to ensure quality and timely delivery. Our facility is equipped with state-of-the-art technology to manage all your textile needs.</p>
+            <p>
+                Key aspects of a textile warehouse:<br>
+                Inventory Management:<br>
+                Textile warehouses use systems to track different types of fabrics, colors, patterns, and quantities, ensuring efficient stock management and minimizing waste. 
+                <br>
+                Order Fulfillment:<br>
+                Warehouses process orders for fabrics, ensuring timely and accurate delivery to customers</p>
+            <a href="#" class="button">Learn More</a>
+            <div class="details">
+                <h2>Our Services</h2>
+                <p>We offer comprehensive textile processing solutions including sorting, dyeing, finishing, and quality control. Our warehouse ensures that all textile materials are stored safely and processed efficiently.</p>
+                <img src="https://addverb.com/wp-content/uploads/2023/10/Warehouse-Automation-fashion-Textile-Industry-banner-ss.png" alt="Textile Processing" class="textile-image" width="800" height="300">
+                <h2>Why Choose Us?</h2>
+                <p>With years of expertise in the textile industry, our team guarantees high-quality processing and on-time delivery. We implement sustainable practices to reduce environmental impact while maintaining efficiency.</p>
+            </div>
+        </div>
+    </div>
+    
+        <div class="content" id="content">
+
+        <div id="products" class="form-section">
+            <h2>Add New Product</h2>
+            <form id="addProductForm" onsubmit="addNewProduct(event)">
+                <label>Product Name:</label>
+                <input type="text" id="productName" required>
+                <label>Fabric Type:</label>
+                <input type="text" id="productFabricType" required>
+                <label>Color:</label>
+                <input type="text" id="productColor" required>
+                <label>Size:</label>
+                <input type="text" id="productSize" required>
+                <label>Weight (gm):</label>
+                <input type="number" id="productWeight" required>
+                <label>Pattern:</label>
+                <input type="text" id="productPattern" required>
+                <label>Price (₹):</label>
+                <input type="number" id="productPrice" required>
+                <label>Quantity:</label>
+                <input type="number" id="productQuantity" required>
+                <label>Product Image URL:</label>
+                <input type="url" id="productImage" required>
+                <button type="submit" class="btn">Add Product</button>
+                </form>
+                <h2>Supplier details</h2>
+                <form id="buyerForm">
+                    <div class="form-group">
+                        <label for="buyerName">Supplier Name:</label>
+                        <input type="text" id="buyerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactNumber">Contact Number:</label>
+                        <input type="text" id="contactNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" required>
+                    </div>
+                    <button type="submit" 
+                    style="background-color: #28a745; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;"
+                    onmouseover="this.style.backgroundColor='#218838'"
+                    onmouseout="this.style.backgroundColor='#28a745'">
+                    Add Supplier
+                </button>
+                </form>
+            <h2>Products</h2>
+            <input type="text" id="searchInput" placeholder="Search..." oninput="searchProducts()">
+            <div class="products-container" id="pro"></div>
+        </div>
+
+        <div id="add-products" class="form-section">
+            <h2>Inventory List</h2>
+            <input type="text" id="inventorySearchInput" placeholder="Search..." oninput="searchInventory()">
+            <table id="inventoryTable">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Fabric Type</th>
+                        <th>Colour</th>
+                        <th>Size</th>
+                        <th>Weight</th>
+                        <th>Pattern</th>
+                        <th>Quantity</th>
+                        <th>Unit Price (RS)</th>
+                        <th>Total Value (RS)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div id="checkout-supplier" class="form-section">
+            <h2>Order Product</h2>
+            <form>
+                
+                <label>Customer Name:</label>
+                <input type="text" id="customer-name" required>
+                <label>Phone Number:</label>
+                <input type="text" id="customer-phone" required>
+                <label>Email:</label>
+                <input type="text" id="customer-email" required>
+                <label>Address:</label>
+                <input type="text" id="customer-address" required>
+                <label>Product Name:</label>
+                <select id="product-dropdown"></select>
+                <label>Quantity:</label>
+                <input type="number" id="checkout-quantity" required>
+                <label>Total Price:</label>
+                <input type="number" id="total-price" readonly>
+                <button type="button" class="btn" onclick="checkoutProduct()">Order</button>
+            </form>
+        </div>
+    
+
+    <div id="customer-details" class="form-section">
+    <h2>Order Details</h2>
+    <table id="customerTable">
+        <thead>
+            <tr>
+                
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Total Price (₹)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<div id="sales-report" class="form-section">
+    <h3>Supplier List</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Supplier ID</th>
+                <th>Name</th>
+                <th>Contact Number</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="buyerTable">
+        </tbody>
+    </table>
+</div>
+
+</div>
+
+  
+
+    <script src="script.js"></script>
+</body>
+</html>
